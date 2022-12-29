@@ -1,0 +1,23 @@
+Edge Router:
+Edge_Router.enable
+Edge_Router#configure terminal
+Edge_Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0/0
+Edge_Router(config)#show ip route
+Edge_Router(config)#traceroute 198.0.0.10
+
+Edge_Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0/1 5
+Edge_Router(config)#show run
+Edge_Router(config)#int s0/0/0
+Edge_Router(config-if)#shut
+Edge_Router(config)#exit
+
+Edge_Router#configure terminal
+Edge_Router(config)#ipv6 unicast-routing
+Edge_Router(config)#ipv6 route ::/1 2001:DB8:A:2::1
+Edge_Router(config)#show run
+
+Edge_Router(config)#ipv6 route ::/1 2001:DB8:A:2::1 5
+Edge_Router(config)#exit
+PC-A:
+C:\>tracert 198.0.10
+C:\>tracert 2001:db8:f:f::10
